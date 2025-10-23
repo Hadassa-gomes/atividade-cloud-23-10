@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Verificar MFA{% endblock %}
+{% block content %}
+<h3>Verificação MFA</h3>
+<p>Informe um código do app autenticador <em>ou</em> um código de recuperação.</p>
+<form method="post">
+  <label>Código TOTP (6 dígitos) <input name="token" pattern="\d{6}"></label>
+  <label>Código de recuperação <input name="recovery"></label>
+  <button type="submit">Verificar</button>
+</form>
+{% endblock %}

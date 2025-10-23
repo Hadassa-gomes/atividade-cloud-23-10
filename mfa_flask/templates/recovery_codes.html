@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Códigos de recuperação{% endblock %}
+{% block content %}
+<h3>Guarde seus códigos de recuperação (uso único)</h3>
+<p class="codes">
+{% for c in codes %}
+{{ c }}<br>
+{% endfor %}
+</p>
+<p>Salve-os em local seguro. Você pode gerar novos códigos a qualquer momento no Dashboard (isso invalida os antigos).</p>
+<a href="{{ url_for('dashboard') }}" role="button">Voltar ao Dashboard</a>
+{% endblock %}

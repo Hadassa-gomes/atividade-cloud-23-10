@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Início · MFA Flask{% endblock %}
+{% block content %}
+  <h2>Exemplo de Site em Python com MFA (TOTP)</h2>
+  <p>Este demo mostra registro, login, matrícula em MFA com QR Code, verificação TOTP e códigos de recuperação.</p>
+  {% if current_user.is_authenticated %}
+    <a href="{{ url_for('dashboard') }}" role="button">Ir ao Dashboard</a>
+  {% else %}
+    <a href="{{ url_for('register') }}" role="button">Crie sua conta</a>
+    <a href="{{ url_for('login') }}" role="button" class="secondary">Entrar</a>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Ativar MFA{% endblock %}
+{% block content %}
+<h3>Ativar MFA</h3>
+{% if data_uri %}
+  <p>Escaneie o QR Code com Google Authenticator ou Microsoft Authenticator e insira um código válido para confirmar.</p>
+  <img class="qr" src="{{ data_uri }}" alt="QR">
+  <details>
+    <summary>Detalhes técnicos (otpauth)</summary>
+    <p><code>{{ uri }}</code></p>
+  </details>
+  <form method="post" action="{{ url_for('mfa_enroll_confirm') }}">
+    <label>Código do app autenticador (6 dígitos) <input name="token" pattern="\d{6}" required></label>
+    <button type="submit">Confirmar e ativar</button>
+  </form>
+{% else %}
+  <p>Clique no botão abaixo para gerar seu segredo e QR Code.</p>
+  <form method="post">
+    <button type="submit">Gerar QR</button>
+  </form>
+{% endif %}
+{% endblock %}

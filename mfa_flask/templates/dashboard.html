@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h3>Dashboard</h3>
+<p>Bem-vindo, {{ current_user.email }}.</p>
+{% if current_user.mfa_enabled %}
+  <p><strong>MFA:</strong> Ativado.</p>
+  <form method="post" action="{{ url_for('rotate_recovery') }}">
+    <button type="submit">Gerar novos códigos de recuperação</button>
+  </form>
+{% else %}
+  <p><strong>MFA:</strong> Desativado.</p>
+  <form method="post" action="{{ url_for('mfa_enroll') }}">
+    <button type="submit">Ativar MFA (iniciar matrícula)</button>
+  </form>
+{% endif %}
+{% endblock %}
